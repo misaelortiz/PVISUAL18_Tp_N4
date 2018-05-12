@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Lista de coches</title>
+    </h:head>
+    <h:body>
+        <p:panel id="pnlMostrarCoche" header="Gestion de Coches">
+            <h:form>
+                <p:panelGrid id="grdCoche" columns="1">
+                    <p:outputLabel id="lblPat" value="Patente"></p:outputLabel>
+                    <p:inputText id="txtPat" value="#{cocheFormBean.coche.patente}"></p:inputText>
+                    <p:outputLabel id="lblMar" value="Marca"></p:outputLabel>
+                    <p:inputText id="txtMar" value="#{cocheFormBean.coche.marca}"></p:inputText>
+                    <p:outputLabel id="lblMod" value="Modelo"></p:outputLabel>
+                    <p:inputText id="txtMod" value="#{cocheFormBean.coche.modelo}"></p:inputText>
+                    <p:outputLabel id="lblCol" value="Color"></p:outputLabel>
+                    <p:inputText id="txtCol" value="#{cocheFormBean.coche.color}"></p:inputText>
+                    <p:outputLabel id="lblComb" value="Combustible"></p:outputLabel>
+                    <p:inputText id="txtComb" value="#{cocheFormBean.coche.combustible}"></p:inputText>
+                    
+                    <p:commandButton id="btnIngreso" value="Agregar" actionListener="#{cocheFormBean.agregarCoche()}" update="dtbValoresCoche" />
+                </p:panelGrid>
+            </h:form>
+           </p:panel>
+
+      </h:body> 
+    
+    
+       <h:body>
+          
+            <p:panel id="pnlRegistro" header="Lista de Coches">
+                <p:dataTable id="dtbValoresCoche" var="car" value="#{cocheFormBean.listaCoches}">
+                <p:column>
+                    
+                <h:outputLabel id="lblPatent" value=" Patente: #{car.patente}" />
+                </p:column>
+                <p:column>
+                <h:outputLabel id="lblMarc" value=" Marca: #{car.marca}" />
+                </p:column>
+                <p:column>
+                <h:outputLabel id="lblModel" value="Modelo: #{car.modelo}" />
+                </p:column>
+                <p:column>
+                <h:outputLabel id="lblColo" value="Color: #{car.color}" />
+                </p:column>
+                <p:column>
+                <h:outputLabel id="lblCombustibl" value="Combustible: #{car.combustible}" />
+                </p:column>
+            </p:dataTable>
+          
+        </p:panel>
+       
+      </h:body>
+   
+  
+</html>
+

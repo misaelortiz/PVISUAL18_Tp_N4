@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Libreria</title>
+    </h:head>
+    <h:body>
+         <p:panel id="pnlLibros" header="Gestion de libros" >
+            <h:form >
+                 <p:panelGrid id="grdLibros" columns="1">
+                    <p:outputLabel id="otpIsbn" value="ISBN">
+                    </p:outputLabel>
+                     <p:inputNumber id="txtIsbn" value="#{libreriaFormBean.isbn}">
+                     </p:inputNumber>
+                    <p:outputLabel id="otpTitulo" value="Titulo">
+                    </p:outputLabel>
+                     <p:inputText id="txtTitulo" value="#{libreriaFormBean.titulo}">
+                     </p:inputText>
+                    <p:outputLabel id="otpAutor" value="Autor">
+                    </p:outputLabel>
+                     <p:selectOneMenu value="#{libreriaFormBean.autor}">
+                    <f:selectItem itemLabel="Nando Aban" itemValue="Nando Aban"/>
+                    <f:selectItem itemLabel="Rafael Abella" itemValue="Rafael Abella"/>
+                    <f:selectItem itemLabel="Marcos Aguins" itemValue="Marcos Aguins"/> 
+                </p:selectOneMenu>
+                    <p:outputLabel id="otpPrecio" value="Precio">     
+                    </p:outputLabel>
+                     <p:inputNumber id="txtPrecio" value="#{libreriaFormBean.precio}">
+                     </p:inputNumber>
+                     <p:commandButton id="btCarga" value="Cargar Libro" actionListener="#{libreriaFormBean.cargarLibro()}"
+                                      update="tblLibros">
+                     </p:commandButton>
+                 </p:panelGrid>
+                <p:panel id="pnlMuestraLibros" header="Libros">
+                <p:dataTable id="tblLibros" var="libr" value="#{libreriaFormBean.libro}">
+                    <p:column headerText="ISBN">
+                        <h:outputText value="#{libr.isbns}" />
+                    </p:column>
+ 
+                    <p:column headerText="Titulo">
+                        <h:outputText value="#{libro.titulos}" />
+                    </p:column>
+ 
+                    <p:column headerText="Autor">
+                        <h:outputText value="#{libro.autores}" />
+                </p:column>
+ 
+                <p:column headerText="Precio">
+                    <h:outputText value="#{libro.precios}" />
+                </p:column>
+                </p:dataTable>
+                </p:panel>
+            </h:form>
+        </p:panel>
+    </h:body>
+</html>
+
