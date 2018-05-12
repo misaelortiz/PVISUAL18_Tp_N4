@@ -8,53 +8,55 @@
         <title>Libreria</title>
     </h:head>
     <h:body>
-         <p:panel id="pnlLibros" header="Gestion de libros" >
-            <h:form >
-                 <p:panelGrid id="grdLibros" columns="1">
-                    <p:outputLabel id="otpIsbn" value="ISBN">
-                    </p:outputLabel>
-                     <p:inputNumber id="txtIsbn" value="#{libreriaFormBean.isbn}">
-                     </p:inputNumber>
-                    <p:outputLabel id="otpTitulo" value="Titulo">
-                    </p:outputLabel>
-                     <p:inputText id="txtTitulo" value="#{libreriaFormBean.titulo}">
-                     </p:inputText>
-                    <p:outputLabel id="otpAutor" value="Autor">
-                    </p:outputLabel>
-                     <p:selectOneMenu value="#{libreriaFormBean.autor}">
-                    <f:selectItem itemLabel="Nando Aban" itemValue="Nando Aban"/>
-                    <f:selectItem itemLabel="Rafael Abella" itemValue="Rafael Abella"/>
-                    <f:selectItem itemLabel="Marcos Aguins" itemValue="Marcos Aguins"/> 
-                </p:selectOneMenu>
-                    <p:outputLabel id="otpPrecio" value="Precio">     
-                    </p:outputLabel>
-                     <p:inputNumber id="txtPrecio" value="#{libreriaFormBean.precio}">
-                     </p:inputNumber>
-                     <p:commandButton id="btCarga" value="Cargar Libro" actionListener="#{libreriaFormBean.cargarLibro()}"
-                                      update="tblLibros">
-                     </p:commandButton>
-                 </p:panelGrid>
-                <p:panel id="pnlMuestraLibros" header="Libros">
-                <p:dataTable id="tblLibros" var="libr" value="#{libreriaFormBean.libro}">
+        <p:panel id="pnlLibros" header="Carga de Libros">
+            <h:form id="frmCargaLibros" >
+                <p:panelGrid id="pnlGrdLibros" columns="3" >
+                    <p:outputLabel id="otpIsbn" for="inpIsbn" value="ISBN"/>
+                    <p:inputNumber id="inpIsbn" required="true" value="#{libroFormBeans.libro.isbn}">
+                    </p:inputNumber>
+                    <p:message for="inpIsbn" />
+                    
+                    <p:outputLabel id="otpTitulo" for="inpTitulo" value="Titulo"/>
+                    <p:inputText id="inpTitulo" required="true" value="#{libroFormBeans.libro.titulo}">
+                    </p:inputText>
+                    <p:message for="inpTitulo"/>
+                    
+                    <p:outputLabel id="otpAutor" for="menuAutor" value="Autor"/>
+                    <p:selectOneMenu id="menuAutor" required="true" value="#{libroFormBeans.libro.autor}">
+                        <f:selectItem itemLabel="Seleccione"/>
+                        <f:selectItem itemLabel="Andrew Hunt" itemValue="Andrew Hunt"/>
+                        <f:selectItem itemLabel="Roth Veronica" itemValue="Roth Veronica"/>
+                        <f:selectItem itemLabel="Robert Martin" itemValue="Robert Martin"/>
+                        <f:selectItem itemLabel="Krug Steve" itemValue="Krug Steve"/>
+                        <f:selectItem itemLabel="Roger Pressman" itemValue="Roger Pressman"/>                        
+                    </p:selectOneMenu>
+                    <p:message for="menuAutor"/>
+                    
+                    <p:outputLabel id="otpPrecio" for="inpPrecio" value="Precio"/>
+                    <p:inputNumber id="inpPrecio" required="true" value="#{libroFormBeans.libro.precio}" >
+                    </p:inputNumber>
+                    <p:message for="inpPrecio"/>
+                   
+                    <p:commandButton id="btnAgregar" update="tblLista pnlGrdLibros"
+                                     actionListener="#{libroFormBeans.agregarLibro()}" value="Agregar" />
+                </p:panelGrid>
+                <p:dataTable id="tblLista" var="lista" value="#{libroFormBeans.libros}">
                     <p:column headerText="ISBN">
-                        <h:outputText value="#{libr.isbns}" />
+                        <h:outputText value="#{lista.isbn}"/>
                     </p:column>
- 
                     <p:column headerText="Titulo">
-                        <h:outputText value="#{libro.titulos}" />
+                        <h:outputText value="#{lista.titulo}"/>
                     </p:column>
- 
                     <p:column headerText="Autor">
-                        <h:outputText value="#{libro.autores}" />
-                </p:column>
- 
-                <p:column headerText="Precio">
-                    <h:outputText value="#{libro.precios}" />
-                </p:column>
+                        <h:outputText value="#{lista.autor}"/>
+                    </p:column>
+                    <p:column headerText="Precio">
+                        <h:outputText value="#{lista.precio}"/>
+                    </p:column>
                 </p:dataTable>
-                </p:panel>
             </h:form>
         </p:panel>
+        
     </h:body>
 </html>
 
