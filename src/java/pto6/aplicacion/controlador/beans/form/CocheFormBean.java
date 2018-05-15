@@ -5,6 +5,7 @@
  */
 package pto6.aplicacion.controlador.beans.form;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -16,12 +17,14 @@ import pto6.aplicacion.modelo.dominio.Coche;
  */
 @ManagedBean
 @RequestScoped
-public class CocheFormBean {
-    Coche coche;
-    ArrayList <Coche> listaCoches = new ArrayList<Coche>();
+public class CocheFormBean implements Serializable {
+    private Coche coche;
+    private ArrayList <Coche> coches ;
+   
     
     public CocheFormBean() {
         coche = new Coche();
+        coches=new ArrayList<>();
     }
 
     public Coche getCoche() {
@@ -32,15 +35,17 @@ public class CocheFormBean {
         this.coche = coche;
     }
 
-    public ArrayList<Coche> getListaCoches() {
-        return listaCoches;
+    public ArrayList<Coche> getCoches() {
+        return coches;
     }
 
-    public void setListaCoches(ArrayList<Coche> listaCoches) {
-        this.listaCoches = listaCoches;
+    public void setCoches(ArrayList<Coche> coches) {
+        this.coches = coches;
     }
     public void agregarCoche(){
-        listaCoches.add(coche);
+        
+       coches.add(coche);
+       coche = new Coche();
     }
     
 }

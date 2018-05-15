@@ -5,17 +5,31 @@
  */
 package pto6.aplicacion.modelo.dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Alumno
  */
-public class Coche {
+public class Coche implements Serializable {
     private String patente;
     private String marca;
     private String modelo;
     private String color;
     private String combustible;
 
+    public Coche() {
+        
+    }
+
+    public Coche(String patente, String marca, String modelo, String color, String combustible) {
+        this.patente = patente;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.color = color;
+        this.combustible = combustible;
+    }
+   
     public String getPatente() {
         return patente;
     }
@@ -56,12 +70,7 @@ public class Coche {
         this.combustible = combustible;
     }
     
-    
-    
-   public void mostrarAutos(Coche[] autos){
-        }
-   public void modificarValoresAuto(Coche[] coches, int i){
-        
+
           
-}
+
 }
